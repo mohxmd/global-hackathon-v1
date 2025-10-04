@@ -53,7 +53,6 @@ export function AuthForm({ mode }: AuthFormProps) {
         toast.success(
           isSignup ? "Account created successfully!" : "Signed in successfully!"
         );
-        // TODO: later router.push("");
       } else {
         toast.error(result.error);
       }
@@ -151,7 +150,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             {isSignup ? "Already have an account?" : "Don't have an account?"}
 
             <Button asChild variant="link" className="px-2">
-              <Link href={isSignup ? "/sign-in" : "/sign-up"}>
+              <Link href={isSignup ? "/join" : "/enter"}>
                 {isSignup ? "Sign In" : "Sign Up"}
               </Link>
             </Button>

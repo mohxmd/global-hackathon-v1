@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { admin, organization } from "better-auth/plugins";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { nextCookies } from "better-auth/next-js";
 
 import { db } from "@/db";
 import * as authSchema from "@/db/schema/auth.sql";
@@ -19,17 +20,13 @@ export const auth = betterAuth({
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
     },
-    cookiePrefix: "sass-app",
+    cookiePrefix: "my-app",
     useSecureCookies: process.env.NODE_ENV === "production",
   },
   emailAndPassword: {
     enabled: true,
     autoSignIn: true,
     minPasswordLength: 8,
-    requireEmailVerification: true,
-  },
-  user: {
-    additionalFields: {},
   },
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days
@@ -42,7 +39,7 @@ export const auth = betterAuth({
   account: {
     accountLinking: { enabled: true },
   },
-  plugins: [organization(), admin()],
+  plugins: [nextCookies(), organization(), admin()],
 });
 
 export type Auth = typeof auth;
