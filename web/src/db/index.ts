@@ -4,11 +4,13 @@ import ws from "ws";
 
 neonConfig.webSocketConstructor = ws;
 
-if (!process.env.DATABASE_URL) {
+const DB_URL = process.env.DATABASE_URL;
+
+if (!DB_URL) {
   const err = "MISSING DATABASE_URL in .env";
   console.error(err);
   throw new Error(err);
 }
 
-export const db = drizzle(process.env.DATABASE_URL);
+export const db = drizzle(DB_URL);
 export type DB = typeof db;
