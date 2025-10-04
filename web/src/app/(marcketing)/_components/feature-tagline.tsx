@@ -9,7 +9,7 @@ export function FeatureTagline() {
       </h1>
 
       <Button asChild variant="default">
-        <Link href="/sign-up">Get Started</Link>
+        <Link href="/join">Get Started</Link>
       </Button>
     </div>
   );
