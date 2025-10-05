@@ -39,7 +39,7 @@ export function HavenCreateForm() {
     defaultValues: {
       name: "",
       slug: "",
-      logo: undefined,
+      logo: "",
     },
     mode: "onChange",
   });

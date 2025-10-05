@@ -21,8 +21,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Check if user has created a Haven
-  const userId = session?.user?.id;
-  const hasHaven = await getUserHavens(userId);
+  const hasHaven = (await getUserHavens()).length > 0;
 
   // If user logged in but no Haven → force onboarding
   if (!hasHaven && !pathname.startsWith("/haven/new")) {

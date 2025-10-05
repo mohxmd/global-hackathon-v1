@@ -10,4 +10,4 @@ export const updatedAt = timestamp({ withTimezone: true })
   .$onUpdate(() => new Date());
 export const deletedAt = timestamp({ withTimezone: true });
 
-export const timestamps = { createdAt, updatedAt };
+export const timestamps = { createdAt, updatedAt, deletedAt };
