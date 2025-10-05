@@ -1,5 +1,5 @@
-import { EchoGridSkeleton } from "../_components/echo-grid-skeleton";
-import { HavenSidebarSkeleton } from "../_components/haven-sidebar-skeleton";
+import { EchoGridSkeleton } from "./_components/echo-grid-skeleton";
+import { HavenSidebarSkeleton } from "./_components/haven-sidebar-skeleton";
 
 export default function Loading() {
   return (

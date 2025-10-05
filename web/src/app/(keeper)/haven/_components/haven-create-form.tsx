@@ -23,8 +23,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { organizationInsertSchema } from "@/db/schema/auth.sql";
 import { fileToBase64, toSlug } from "@/lib/utils/string";
-import { createHaven } from "../_actions";
 import { useRouter } from "next/navigation";
+import { createHaven } from "../../_actions/haven";
 
 type FormValues = z.infer<typeof organizationInsertSchema>;
 

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { HavenTopBar } from "../_components/header";
-import { FloatingActions } from "../_components/floating-actions";
-import { HavenTopBarSkeleton } from "../_components/haven-topbar-skeleton";
+import { HavenTopBar } from "./_components/header";
+import { FloatingActions } from "./_components/floating-actions";
+import { HavenTopBarSkeleton } from "./_components/haven-topbar-skeleton";
 
 export default async function ArchiveLayout({
   children,

@@ -1,6 +1,6 @@
 import { getEchoes } from "@/data/echoes/get-echoes";
-import { EchoGrid } from "../_components/echo-grid";
-import { HavenSidebar } from "../_components/sidebar";
+import { EchoGrid } from "./_components/echo-grid";
+import { HavenSidebar } from "./_components/sidebar";
 import { getUserHavens } from "@/data/havens/get-havens";
 import { getSession } from "@/data/auth/session";
 

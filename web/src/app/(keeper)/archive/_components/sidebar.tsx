@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { UserHaven } from "@/data/havens/get-havens";
-import { setActiveHaven } from "../_actions/haven";
+import { setActiveHaven } from "../../_actions/haven";
 
 type HavenSidebarProps = {
   havens: UserHaven[];
