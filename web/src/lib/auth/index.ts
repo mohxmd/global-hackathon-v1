@@ -5,8 +5,7 @@ import { nextCookies } from "better-auth/next-js";
 
 import { db } from "@/db";
 import * as authSchema from "@/db/schema/auth.sql";
-
-// TODO: later after haven create (set active haven(org))
+import { getActiveHaven } from "@/data/havens/get-havens";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -29,6 +28,21 @@ export const auth = betterAuth({
     enabled: true,
     autoSignIn: true,
     minPasswordLength: 8,
+  },
+  databaseHooks: {
+    session: {
+      create: {
+        before: async (session) => {
+          const organization = await getActiveHaven(session.userId);
+          return {
+            data: {
+              ...session,
+              activeOrganizationId: organization ? organization.id : null,
+            },
+          };
+        },
+      },
+    },
   },
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days

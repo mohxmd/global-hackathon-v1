@@ -3,6 +3,21 @@ import { member, organization } from "@/db/schema/auth.sql";
 import { eq } from "drizzle-orm";
 import { getSession } from "../auth/session";
 
+export async function getActiveHaven(userId: string) {
+  const result = await db
+    .select({
+      id: organization.id,
+      name: organization.name,
+      slug: organization.slug,
+    })
+    .from(member)
+    .where(eq(member.userId, userId))
+    .innerJoin(organization, eq(member.organizationId, organization.id))
+    .limit(1);
+
+  return result[0];
+}
+
 export async function getUserHavens() {
   const { user } = await getSession();
   const havens = await db
