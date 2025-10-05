@@ -8,7 +8,7 @@ export default function Loading() {
         <HavenSidebarSkeleton />
       </div>
 
-      <section aria-label="Echo Feed" className="min-w-0">
+      <section aria-label="Echo Feed" className="min-w-0 p-4">
         <EchoGridSkeleton />
       </section>
     </div>

@@ -9,19 +9,15 @@ export default async function ArchiveLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-[100svh]">
+    <div className="flex flex-col h-screen overflow-hidden">
       <Suspense fallback={<HavenTopBarSkeleton />}>
         <HavenTopBar />
       </Suspense>
 
-      <main className="w-full h-full">
-        {children}
+      <main className="flex-1 relative overflow-y-auto">
+        <div className="h-full">{children}</div>
 
-        <FloatingActions
-          addHref="/echo/new"
-          inviteHref="/invite"
-          settingsHref="/settings"
-        />
+        <FloatingActions inviteHref="/invite" settingsHref="/settings" />
       </main>
     </div>
   );

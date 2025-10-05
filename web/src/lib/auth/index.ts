@@ -6,6 +6,8 @@ import { nextCookies } from "better-auth/next-js";
 import { db } from "@/db";
 import * as authSchema from "@/db/schema/auth.sql";
 
+// TODO: later after haven create (set active haven(org))
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",

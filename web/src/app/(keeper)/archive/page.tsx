@@ -20,8 +20,8 @@ export default async function page() {
         />
       </div>
 
-      <section aria-label="Echo Feed" className="min-w-0">
-        <EchoGrid echoes={echoes} addHref="/echo/new" />
+      <section aria-label="Echo Feed" className="min-w-0 p-4">
+        <EchoGrid echoes={echoes} />
       </section>
     </div>
   );

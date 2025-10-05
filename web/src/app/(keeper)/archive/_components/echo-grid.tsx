@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Empty,
   EmptyContent,
@@ -7,23 +6,20 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { Button } from "@/components/ui/button";
 import { Echo } from "@/data/echoes/get-echoes";
 import { EchoCard } from "./echo-card";
+import { EchoCreateSheet } from "./echo-create-form";
+import { Button } from "@/components/ui/button";
 
 type EchoGridProps = {
   echoes: Echo[];
-  addHref?: string;
 };
 
-export function EchoGrid({ echoes, addHref = "/echo/new" }: EchoGridProps) {
+export function EchoGrid({ echoes }: EchoGridProps) {
   if (!echoes.length) {
     return (
-      <Empty className="bg-muted/30">
+      <Empty>
         <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <img src="/archive-placeholder.jpg" alt="" className="h-10 w-10" />
-          </EmptyMedia>
           <EmptyTitle>
             {"Your Archive is waiting for its first Echo."}
           </EmptyTitle>
@@ -32,9 +28,9 @@ export function EchoGrid({ echoes, addHref = "/echo/new" }: EchoGridProps) {
           </EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
-          <Button asChild>
-            <Link href={addHref}>Create Echo</Link>
-          </Button>
+          <EchoCreateSheet>
+            <Button>Create Echo</Button>
+          </EchoCreateSheet>
         </EmptyContent>
       </Empty>
     );
