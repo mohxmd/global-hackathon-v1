@@ -35,6 +35,14 @@ export async function createHaven(data: OrganizationInsert) {
       return { success: false, error: "Haven creation failed" };
     }
 
+    await auth.api.setActiveOrganization({
+      body: {
+        organizationId: newHaven.id,
+        organizationSlug: newHaven.slug,
+      },
+      headers: await headers(),
+    });
+
     revalidatePath("/archive");
 
     return { success: true, slug: newHaven?.slug };

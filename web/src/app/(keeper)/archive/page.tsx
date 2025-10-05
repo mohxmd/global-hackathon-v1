@@ -3,12 +3,15 @@ import { EchoGrid } from "./_components/echo-grid";
 import { HavenSidebar } from "./_components/sidebar";
 import { getUserHavens } from "@/data/havens/get-havens";
 import { getSession } from "@/data/auth/session";
+import { FloatingActions } from "./_components/floating-actions";
+import { getUsers } from "@/data/user/get-users";
 
 export default async function page() {
-  const [echoes, userHavens, { session }] = await Promise.all([
+  const [echoes, userHavens, { session }, users] = await Promise.all([
     getEchoes(),
     getUserHavens(),
     getSession(),
+    getUsers(),
   ]);
 
   return (
@@ -22,6 +25,8 @@ export default async function page() {
 
       <section aria-label="Echo Feed" className="min-w-0 p-4">
         <EchoGrid echoes={echoes} />
+
+        <FloatingActions users={users} />
       </section>
     </div>
   );

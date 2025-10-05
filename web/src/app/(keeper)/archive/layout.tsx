@@ -14,11 +14,7 @@ export default async function ArchiveLayout({
         <HavenTopBar />
       </Suspense>
 
-      <main className="flex-1 relative overflow-y-auto">
-        <div className="h-full">{children}</div>
-
-        <FloatingActions inviteHref="/invite" settingsHref="/settings" />
-      </main>
+      <main className="flex-1 relative overflow-y-auto">{children}</main>
     </div>
   );
 }

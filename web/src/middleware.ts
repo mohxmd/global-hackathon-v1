@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCookieCache } from "better-auth/cookies";
 import { getUserHavens } from "@/data/havens/get-havens";
+import { auth } from "./lib/auth";
+import { headers } from "next/headers";
 
 export async function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
-  const session = await getCookieCache(request, {
-    cookiePrefix: "my-app",
+  const session = await auth.api.getSession({
+    headers: await headers(),
   });
 
   if (!session) {
