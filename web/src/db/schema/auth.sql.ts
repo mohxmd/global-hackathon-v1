@@ -1,5 +1,8 @@
 import { pgTable, text, timestamp, boolean, uuid } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+
 import { id } from "./_helpers";
+import z from "zod";
 
 export const user = pgTable("user", {
   id,
@@ -109,3 +112,11 @@ export const invitation = pgTable("invitation", {
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
 });
+
+// zod-schema
+export const organizationInsertSchema = createInsertSchema(organization)
+  .omit({ createdAt: true })
+  .extend({
+    logo: z.union([z.instanceof(File), z.string()]).optional(),
+  });
+export type OrganizationInsert = z.infer<typeof organizationInsertSchema>;

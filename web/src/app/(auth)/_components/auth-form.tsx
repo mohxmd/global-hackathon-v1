@@ -53,6 +53,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         toast.success(
           isSignup ? "Account created successfully!" : "Signed in successfully!"
         );
+        router.replace("/archive");
       } else {
         toast.error(result.error);
       }
